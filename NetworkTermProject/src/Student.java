@@ -18,9 +18,15 @@ public class Student {
 	public void win() {this.win++;}
 	public void lose() {this.lose++;}
 	public void draw() {this.draw++;}
+	public void time(String time) {this.time = time;}
 	public String getName() {return name;}
 	public String getID() {return id;}
 	public String getPasswd() {return passwd;}
+	public int getWin() {return win;}
+	public int getlose() {return lose;}
+	public int getdraw() {return draw;}
+	public String getTime() {return time;}
+	
 	
 	
 }
