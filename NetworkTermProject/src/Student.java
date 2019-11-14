@@ -25,7 +25,7 @@ public class Student {
 	public int getWin() {return win;}
 	public int getlose() {return lose;}
 	public int getdraw() {return draw;}
-	public String getTime() {return time;}
+	
 	
 	
 	
