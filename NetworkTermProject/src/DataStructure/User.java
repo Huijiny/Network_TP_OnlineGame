@@ -1,18 +1,24 @@
+package DataStructure;
+import java.io.Serializable;
 
-public class Student {
+public class User implements Serializable{
 
-	String name;
-	String id;
-	String passwd;
-	int win;
-	int lose;
-	int draw;
-	String time;
+	private int no;
+	private String name;
+	private String id;
+	private String passwd;
+	private int win;
+	private int lose;
+	private int draw;
+	private String time;
 	
-	public Student(String name, String id, String passwd) {
+	public User(String name, String id, String passwd) {
 		this.name = name;
 		this.id = id;
 		this.passwd = passwd;
+	}
+	public User(int no) {
+		this.no = no;
 	}
 	
 	public void win() {this.win++;}
@@ -26,6 +32,12 @@ public class Student {
 	public int getlose() {return lose;}
 	public int getdraw() {return draw;}
 	
+	@Override
+	public String toString() {
+		return String.format("User{number='%s', name='%s', id='%s', passwd='%s',"
+				+ "win='%s, lose='%s', draw='%s', time='%s'}", no,name,id,passwd,win,lose,draw,time);
+		
+	}
 	
 	
 	
