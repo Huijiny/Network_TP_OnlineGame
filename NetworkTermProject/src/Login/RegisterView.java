@@ -2,6 +2,7 @@ package Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.ObjectOutputStream;
@@ -88,14 +89,21 @@ public class RegisterView extends JFrame {
 		ObjectOutputStream oos =null;
 		
 		try {
-			fos = new FileOutputStream("./userinfo.txt");
-			oos = new ObjectOutputStream(fos);
+			if(new File("userinfo.txt").exists()) {
+				fos = new FileOutputStream("./userinfo.txt",true);
+				oos = new  MyObjectOutputStream(fos);
+			}else {
+				fos = new FileOutputStream("./userinfo.txt");
+				oos = new ObjectOutputStream(fos);
+			}
 			oos.writeObject(user);
+			oos.flush();
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}finally {
 			try {
 				oos.close();
+				fos.close();
 			}catch(Exception e) {}
 		}
 		

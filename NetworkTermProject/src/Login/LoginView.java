@@ -6,13 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
- 
- 
- 
+
+import DataStructure.User;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.awt.event.ActionEvent;
@@ -50,9 +51,6 @@ public class LoginView extends JFrame {
 	     */
 	    public LoginView() {
 	        map= new HashMap<String,String>();
-	        map.put("kim", "1234");
-	        map.put("park", "1111");
-	        map.put("hong", "2222");
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setBounds(100, 100, 452, 439);
 	        contentPane = new JPanel();
@@ -113,5 +111,11 @@ public class LoginView extends JFrame {
 	        });
 	        joinBtn.setBounds(237, 120, 97, 23);
 	        contentPane.add(joinBtn);
+	    }
+	    
+	    void getRegisteredUserInfo(ArrayList<User> users) {
+	    	for(int i=0;i<users.size();i++) {
+	    		map.put(users.get(i).getID(), users.get(i).getPasswd());
+	    	}
 	    }
 }
