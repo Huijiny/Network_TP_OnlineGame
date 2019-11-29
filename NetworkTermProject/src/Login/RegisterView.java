@@ -13,22 +13,32 @@ import DataStructure.User;
 
 import java.awt.*;
 public class RegisterView extends JFrame {
+	public JButton j1;
+	public JButton j2;
+	public TextField t1;
+	public TextField t2 ;
+	public TextField t3 ;
 	public RegisterView() {
 		JPanel p = new JPanel();
 		p.setLayout(null);
-		Label name = new Label("이름");
-		Label id = new Label("아이디");
-		Label pw = new Label("패스워드");
-		Label ad = new Label("주소");
-		Label other = new Label("추가사항");
+		ImageIcon nameicon = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\nameRegi.png");
+		ImageIcon idicon = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\id.png");
+		ImageIcon pwicon = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\passwd.png");
+		ImageIcon addressicon = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\addRegi.png");
+		ImageIcon addicon = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\additionRegi.png");
+		JLabel name = new JLabel(nameicon);
+		JLabel id = new JLabel(idicon);
+		JLabel pw = new JLabel(pwicon);
+		JLabel ad = new JLabel(addressicon);
+		JLabel other = new JLabel(addicon);
 		p.add(name);
 		p.add(id);
 		p.add(pw);
 		p.add(ad);
 		p.add(other);
-		TextField t1 = new TextField();
-		TextField t2 = new TextField();
-		TextField t3 = new TextField();
+		t1 = new TextField();
+		t2 = new TextField();
+		t3 = new TextField();
 		TextField t4 = new TextField();
 		TextField t5 = new TextField();
 		p.add(t1);
@@ -38,76 +48,37 @@ public class RegisterView extends JFrame {
 		p.add(t4);
 		p.add(t5);
 		t3.setEchoChar('*');
-		JButton j1 = new JButton("저장");
-		JButton j2 = new JButton("취소");
+		
+		j1 = new JButton("저장");
+		j2 = new JButton("취소");
+		
 		p.add(j1);
 		p.add(j2);
-		name.setBounds(40,10,40,40);
-		id.setBounds(40, 50, 40, 40);
-		pw.setBounds(40, 90, 60, 40);
-		ad.setBounds(40, 130, 40, 40);
-		other.setBounds(40, 170, 60, 40);
-		t1.setBounds(120,10,200,30);
-		t2.setBounds(120,50, 200,30);
-		t3.setBounds(120,90,200,30);
-		t4.setBounds(120,130,280,30);
-		t5.setBounds(120,180,280,120);
-		j1.setBounds(125,330,80,30);
-		j2.setBounds(240,330,80,30);
-		add(p);
-		setSize(500	,500);
+		name.setBounds(45,114,75,40);
+		id.setBounds(45, 166, 87, 40);
+		pw.setBounds(40, 212, 156, 49);
+		ad.setBounds(40, 273, 87, 40);
+		other.setBounds(40, 352, 133, 40);
+		t1.setBounds(211,114,200,36);
+		t2.setBounds(211,163, 200,43);
+		t3.setBounds(211,221,200,40);
+		t4.setBounds(211,273,314,61);
+		t5.setBounds(211,352,314,102);
+		j1.setBounds(68,486,211,55);
+		j2.setBounds(314,486,211,55);
+		getContentPane().add(p);
+		setSize(600	,600);
 		setTitle("회원가입");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		p.setBackground(new Color(242,238,229));
+
+		ImageIcon registerTitle = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\registerTitle.png");
+		JLabel lblNewLabel = new JLabel(registerTitle);
+		lblNewLabel.setBounds(177, 29, 220, 61);
+		p.add(lblNewLabel);
 		setVisible(true);
-		j1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				try {
-					User user = new User(t1.getText(),t2.getText(),t3.getText());
-					setUserInfo(user);
-					dispose();
-				}catch(Exception ex) {
-					JOptionPane.showMessageDialog(null,"회원가입에 실패하였습니다.");
-				}
-			}
-			
-		});
-		j2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				dispose();
-			}
-			
-		});
-	}
-	void setUserInfo(User user) {
-		FileOutputStream fos = null;
-		ObjectOutputStream oos =null;
-		
-		try {
-			if(new File("userinfo.txt").exists()) {
-				fos = new FileOutputStream("./userinfo.txt",true);
-				oos = new  MyObjectOutputStream(fos);
-			}else {
-				fos = new FileOutputStream("./userinfo.txt");
-				oos = new ObjectOutputStream(fos);
-			}
-			oos.writeObject(user);
-			oos.flush();
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}finally {
-			try {
-				oos.close();
-				fos.close();
-			}catch(Exception e) {}
-		}
-		
-		
 		
 	}
+		
 }

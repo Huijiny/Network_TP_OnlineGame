@@ -22,6 +22,7 @@ import DataStructure.User;
 //import org.springframework.web.bind.annotation.RestController;
  
 //@RestController
+
 public class FileWhatcher {
     //프로젝트 경로
    // private static final String projPath = System.getProperty("userinfo.txt");
@@ -63,7 +64,7 @@ public class FileWhatcher {
                         System.out.println("delete something in directory");
                     }else if(kind.equals(StandardWatchEventKinds.ENTRY_MODIFY)) {
                         System.out.println("modified something in directory");
-                        test.getUserInfo();
+                       // test.getUserInfo();
                         
                     }else if(kind.equals(StandardWatchEventKinds.OVERFLOW)) {
                         System.out.println("overflow");

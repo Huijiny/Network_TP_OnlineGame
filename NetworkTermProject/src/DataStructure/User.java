@@ -17,10 +17,22 @@ public class User implements Serializable{
 		this.id = id;
 		this.passwd = passwd;
 	}
+	public User() {
+		
+	}
 	public User(int no) {
 		this.no = no;
 	}
-	
+	public User(String id, String passwd) {
+		this.id = id;
+		this.passwd = passwd;
+	}
+	public void setName(String name) {this.name = name;	}
+	public void setID(String ID) {this.id = ID;}
+	public void setPasswd(String pw) {this.passwd = pw;}
+	public void setWin(int win) {this.win = win;}
+	public void setLose(int lose) {this.lose = lose;}
+	public void setDraw(int draw) {this.draw = draw;}
 	public void win() {this.win++;}
 	public void lose() {this.lose++;}
 	public void draw() {this.draw++;}

@@ -11,6 +11,7 @@ import DataStructure.User;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -20,31 +21,17 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 public class LoginView extends JFrame {
-	
-	 private JPanel contentPane;
-	    private JTextField idField;
-	    private JPasswordField pw;
-	    private JLabel IblResult;
+	 	public User user ;
+	 	public JButton loginBtn;
+	 	public JPanel contentPane;
+	    public JTextField idField;
+	    public JPasswordField pw;
 	    private Map<String, String> map;
-	    private JButton joinBtn;
+	    public JButton joinBtn;
 	    /**
 	     * Launch the application.
 	     */
-	    /*
-	    public static void main(String[] args) {
-	        
-	        EventQueue.invokeLater(new Runnable() {
-	            public void run() {
-	                try {
-	                    LoginView frame = new LoginView();
-	                    frame.setVisible(true);
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        });
-	    }
-	 */
+	    
 	    /**
 	     * Create the frame.
 	     * @return 
@@ -52,70 +39,46 @@ public class LoginView extends JFrame {
 	    public LoginView() {
 	        map= new HashMap<String,String>();
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setBounds(100, 100, 452, 439);
+	        setBounds(100, 100, 500, 400);
 	        contentPane = new JPanel();
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+	        contentPane.setBackground(new Color(242,238,229));
 	        setContentPane(contentPane);
 	        contentPane.setLayout(null);
 	        
-	        JLabel lblNewLabel = new JLabel("아이디");
-	        lblNewLabel.setBounds(12, 34, 57, 15);
+	        ImageIcon id = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\id.png");
+	        JLabel lblNewLabel = new JLabel(id);
+	        lblNewLabel.setBounds(103, 114, 98, 33);
 	        contentPane.add(lblNewLabel);
 	        
 	        idField = new JTextField();
-	        idField.setBounds(95, 31, 116, 21);
+	        idField.setBounds(268, 114, 141, 33);
 	        contentPane.add(idField);
 	        idField.setColumns(10);
 	        
-	        JLabel label = new JLabel("비밀번호");
-	        label.setBounds(12, 80, 57, 15);
+	        ImageIcon passwd = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\passwd.png");
+	        JLabel label = new JLabel(passwd);
+	        label.setBounds(110, 173, 144, 47);
 	        contentPane.add(label);
 	        
-	        JButton btnNewButton = new JButton("로그인");
-	        btnNewButton.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	                String result;
-	                String id = idField.getText();
-	                String pass = String.valueOf(pw.getPassword());
-	                if(map.containsKey(id)&&pass.equals(map.get(id))){
-	                    result=" 환영합니다.";
-	                    IblResult.setForeground(Color.green);
-	                }else{
-	                    result="아이디 또는 비번이 잘못됨";
-	                    IblResult.setForeground(Color.blue);
-	                }
-	                System.out.println(map.containsKey(id));
-	                System.out.println(map.get(id));
-	                System.out.println(pass);
-	                
-	                IblResult.setText(result);
-	            }
-	        });
-	        btnNewButton.setBounds(95, 120, 97, 23);
-	        contentPane.add(btnNewButton);
-	        
-	        IblResult = new JLabel("New label");
-	        IblResult.setBounds(12, 176, 199, 92);
-	        contentPane.add(IblResult);
+	        loginBtn = new JButton("로그인");
+	       
+	        loginBtn.setBounds(96, 275, 135, 46);
+	        contentPane.add(loginBtn);
 	        
 	        pw = new JPasswordField();
-	        pw.setBounds(95, 77, 116, 21);
+	        pw.setBounds(268, 173, 141, 33);
 	        contentPane.add(pw);
 	        
 	        joinBtn = new JButton("회원가입");
-	        joinBtn.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	            	RegisterView rv = new RegisterView();
-	            	rv.setVisible(true);
-	            }
-	        });
-	        joinBtn.setBounds(237, 120, 97, 23);
+	        joinBtn.setBounds(300, 275, 129, 46);
 	        contentPane.add(joinBtn);
-	    }
-	    
-	    void getRegisteredUserInfo(ArrayList<User> users) {
-	    	for(int i=0;i<users.size();i++) {
-	    		map.put(users.get(i).getID(), users.get(i).getPasswd());
-	    	}
+	        
+	        ImageIcon loginTitle = new ImageIcon("C:\\NW_TP\\NetworkTermProject\\LoginTitle.png");
+	        JLabel lblNewLabel_1 = new JLabel(loginTitle);
+	        lblNewLabel_1.setBounds(149, 27, 193, 59);
+	        contentPane.add(lblNewLabel_1);
+	        setVisible(true);
+			setResizable(true);
 	    }
 }
